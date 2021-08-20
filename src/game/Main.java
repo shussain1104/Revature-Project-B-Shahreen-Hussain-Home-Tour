@@ -5,7 +5,7 @@ import java.util.Scanner;
 import fixtures.Room;
 
 public class Main {
-	public static Scanner userinput = new Scanner(System.in);
+	static Scanner userinput = new Scanner(System.in);
 	public static void main(String[]args)
 	{
 		//pulls up the room information from RoomManager class
@@ -32,19 +32,10 @@ public class Main {
 	//This will explain the user which way to go to leave the room and how to proceed.
 	private static void parse( String[] command, Player player)
 	{
-		String interaction = command[0].toLowerCase().intern();
-		switch(command[1])
+		switch(command[0])
 		{
 		case "go":
-			player.getCurrentRoom().getExit(command[1]);
-			String newRoom = command[1].toLowerCase().intern();
-			String RoomDetails = null;
-			if(command.length>1)
-			{
-				RoomDetails = command[1].toLowerCase().intern();
-			}
-			Room changedRoom = player.getCurrentRoom().getExit(RoomDetails);
-			player.setCurrentRoom(changedRoom);
+			player.setCurrentRoom(player.getCurrentRoom().getExit(command[1]));
 			break;
 		case "exit":
 			player.setCurrentRoom(player.getCurrentRoom().getExit(null));

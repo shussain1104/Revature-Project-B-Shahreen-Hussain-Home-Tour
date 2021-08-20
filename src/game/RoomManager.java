@@ -6,7 +6,7 @@ import fixtures.Room;
 
 public class RoomManager {
 	Room startingRoom;
-	Room[] rooms;
+	Room[] rooms = new Room[5];
 	//This sets the room details
 	public void starting()
 	{
@@ -15,7 +15,7 @@ public class RoomManager {
 				"The small entryway of a neo-colonial house. A dining room is open to the south, where a large table can be seen." + "\n"
 						+ "The hardwood floor leads west into doorway, next to a staircase that leads up to a second floor." + "\n"
 						+ "To the north is a small room, where you can see a piano.");
-		//this.rooms[0] = foyer;
+		this.rooms[0] = foyer;
 		this.startingRoom = foyer;
 		List<String> directions = foyer.getDirections();
 	    rooms = new Room[directions.size()];
@@ -42,12 +42,14 @@ public class RoomManager {
 	    rooms[directions.indexOf("South")] = dining;
 	    rooms[directions.indexOf("North")] = library;
 	    rooms[directions.indexOf("East")] = patio;
+	    rooms[directions.indexOf("West")] = null;
 	    // This sets the exit points from the foyer
 	    foyer.setExits(rooms);
 	    //This sets new room directions after entering the library
 	    rooms = new Room[directions.size()];
 	    rooms[directions.indexOf("South")] = foyer;
 	    rooms[directions.indexOf("East")] = patio;
+	    rooms[directions.indexOf("West")] = null;
 	    // This sets the exit points from the library
 	    library.setExits(rooms);
 	    //This sets new positions of the rooms after entering the dining room.
@@ -55,6 +57,7 @@ public class RoomManager {
 	    //This sets the position of other rooms based off the dining room.
 	    rooms[directions.indexOf("North")] = foyer;
 	    rooms[directions.indexOf("East")]= patio;
+	    rooms[directions.indexOf("West")] = null;
 	 // This sets the exit points from the dining room.
 	    dining.setExits(rooms);
 

@@ -30,7 +30,12 @@ public class Room extends Fixture{
 	// Returns the room based off the direction the user inputs by looking at the index
 	public Room getExit(String direction)
 	{
-		return exits[directions.indexOf(direction)];
+		Room changedRoom = null;
+		for( int i =0; i < directions.size(); i++)
+		{
+			changedRoom = exits[directions.indexOf(direction)];
+		}
+		return changedRoom;
 	}
 	//Getter for directions List to ensure the direction user inputs is properly returned.
 	public List<String> getDirections()
